@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.colonialfolklor.erp.datos;
+package edu.utl.idgs702.prestamosutl.datos.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
