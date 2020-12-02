@@ -164,7 +164,7 @@ public class ControladorLaboratorio {
      * @param idL (id de un laboratorio)
      * @return Laboratorio
      */
-    public static Laboratorio getEmpleadoById(int idL) {
+    public static Laboratorio getLaboratorioById(int idL) {
         String sql = "SELECT * FROM seeLaboratorios WHERE idLaboratorioL = " + idL;
         Laboratorio laboratorio = new Laboratorio();
 

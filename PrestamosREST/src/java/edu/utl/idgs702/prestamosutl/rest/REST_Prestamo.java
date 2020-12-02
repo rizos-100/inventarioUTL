@@ -1,7 +1,8 @@
 package edu.utl.idgs702.prestamosutl.rest;
 
 import com.google.gson.Gson;
-import edu.utl.idgs702.prestamosutl.controlador.ControladorHerramienta;
+import edu.utl.idgs702.prestamosutl.controlador.ControladorPrestamo;
+import edu.utl.idgs702.prestamosutl.modelo.Prestamo;
 import java.util.List;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -11,14 +12,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import edu.utl.idgs702.prestamosutl.modelo.Herramienta;
 import javax.ws.rs.QueryParam;
 /**
  * @author Carlos Solís
  * @version 1.0
  */
-@Path("herramienta")
-public class REST_Herramienta extends Application
+@Path("prestamo")
+public class REST_Prestamo extends Application
 {
     @Path("getAll")
     @GET
@@ -29,8 +29,8 @@ public class REST_Herramienta extends Application
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getAllHerramientas();
-            out = parser.toJson(herramientas);
+            List<Prestamo> prestamos = ControladorPrestamo.getAllPrestamos();
+            out = parser.toJson(prestamos);
         }
         catch(Exception e)
         {
@@ -39,17 +39,17 @@ public class REST_Herramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @Path("getAllActivas")
+    @Path("getAllActivos")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllActivas()
+    public Response getAllActivos()
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasActivas();
-            out = parser.toJson(herramientas);
+            List<Prestamo> prestamos = ControladorPrestamo.getPrestamosActivos();
+            out = parser.toJson(prestamos);
         }
         catch(Exception e)
         {
@@ -58,36 +58,17 @@ public class REST_Herramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @Path("getAllInactivas")
+    @Path("getAllDevueltos")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllInactivas()
+    public Response getAllDevueltos()
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasInactivas();
-            out = parser.toJson(herramientas);
-        }
-        catch(Exception e)
-        {
-            out = "{\"error\":\""+e.toString()+"\"}";
-        }
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
-    
-    @Path("getAllPrestadas")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllPrestadas()
-    {
-        String out = "";
-        try
-        {
-            Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasPrestadas();
-            out = parser.toJson(herramientas);
+            List<Prestamo> prestamos = ControladorPrestamo.getPrestamosDevuelto();
+            out = parser.toJson(prestamos);
         }
         catch(Exception e)
         {
@@ -99,14 +80,14 @@ public class REST_Herramienta extends Application
     @Path("getById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarCliente(@QueryParam("idH") int idH)
+    public Response activarCliente(@QueryParam("idP") int idP)
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            Herramienta herramienta = ControladorHerramienta.getHerramientaById(idH);
-            out = parser.toJson(herramienta);
+            Prestamo prestamo = ControladorPrestamo.getPrestamosById(idP);
+            out = parser.toJson(prestamo);
         }
         catch(Exception e)
         {

@@ -1,7 +1,8 @@
 package edu.utl.idgs702.prestamosutl.rest;
 
 import com.google.gson.Gson;
-import edu.utl.idgs702.prestamosutl.controlador.ControladorHerramienta;
+import edu.utl.idgs702.prestamosutl.controlador.ControladorPrestamoHerramienta;
+import edu.utl.idgs702.prestamosutl.modelo.PrestamoHerramienta;
 import java.util.List;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -11,14 +12,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import edu.utl.idgs702.prestamosutl.modelo.Herramienta;
 import javax.ws.rs.QueryParam;
 /**
  * @author Carlos Solís
  * @version 1.0
  */
-@Path("herramienta")
-public class REST_Herramienta extends Application
+@Path("prestamoHerramienta")
+public class REST_PrestamoHerramienta extends Application
 {
     @Path("getAll")
     @GET
@@ -29,8 +29,8 @@ public class REST_Herramienta extends Application
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getAllHerramientas();
-            out = parser.toJson(herramientas);
+            List<PrestamoHerramienta> prestamosHerramienta = ControladorPrestamoHerramienta.getAllPrestamoHerramientas();
+            out = parser.toJson(prestamosHerramienta);
         }
         catch(Exception e)
         {
@@ -48,8 +48,8 @@ public class REST_Herramienta extends Application
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasActivas();
-            out = parser.toJson(herramientas);
+            List<PrestamoHerramienta> prestamosHerramienta = ControladorPrestamoHerramienta.getPrestamoHerramientasActivas();
+            out = parser.toJson(prestamosHerramienta);
         }
         catch(Exception e)
         {
@@ -58,17 +58,17 @@ public class REST_Herramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @Path("getAllInactivas")
+    @Path("getAllCanceladas")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllInactivas()
+    public Response getAllCanceladas()
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasInactivas();
-            out = parser.toJson(herramientas);
+            List<PrestamoHerramienta> prestamosHerramienta = ControladorPrestamoHerramienta.getPrestamoHerramientasCanceladas();
+            out = parser.toJson(prestamosHerramienta);
         }
         catch(Exception e)
         {
@@ -77,17 +77,17 @@ public class REST_Herramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @Path("getAllPrestadas")
+    @Path("getAllDevueltas")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllPrestadas()
+    public Response getAllDevueltas()
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            List<Herramienta> herramientas = ControladorHerramienta.getHerramientasPrestadas();
-            out = parser.toJson(herramientas);
+            List<PrestamoHerramienta> prestamosHerramienta = ControladorPrestamoHerramienta.getPrestamoHerramientasDevueltas();
+            out = parser.toJson(prestamosHerramienta);
         }
         catch(Exception e)
         {
@@ -96,17 +96,17 @@ public class REST_Herramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @Path("getById")
+    @Path("getAllById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarCliente(@QueryParam("idH") int idH)
+    public Response activarCliente(@QueryParam("idPr") int idPr)
     {
         String out = "";
         try
         {
             Gson parser = new Gson();
-            Herramienta herramienta = ControladorHerramienta.getHerramientaById(idH);
-            out = parser.toJson(herramienta);
+            List<PrestamoHerramienta> prestamosHerramienta = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(idPr);
+            out = parser.toJson(prestamosHerramienta);
         }
         catch(Exception e)
         {

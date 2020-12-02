@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.utl.idgs702.prestamosutl.datos.conexion;
+package edu.utl.idgs702.prestamosutl.datos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
