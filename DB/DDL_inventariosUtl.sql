@@ -7,13 +7,17 @@
  ***********************************************/
  
  /*
-    Version:        1.0
+    Version:        1.1
     Fecha:          28/11/2020 14:00 
     Autor:          Maria Dolores Espinosa Valdez
     Email:          lolis.ev49@gmail.com
     Comentarios:    Esta es la primera version de la base de datos
                     con las instrucciones necesarias para
                     generar las tablas.
+                    
+                    02/12/2020 - Se cambio el estatus de la herramienta a 
+                    tipo entero y se definieron sus significados segun el numero 
+                    que le corresponda.
 
  */
  
@@ -75,7 +79,7 @@
 		tipo               VARCHAR(30) NOT NULL DEFAULT'',
 	    material           VARCHAR(40) NOT NULL DEFAULT'',
 		condiciones        VARCHAR(60) NOT NULL DEFAULT '',
-	    estatus            VARCHAR(60) NOT NULL DEFAULT '',/*1. Activo 2.Inactivo*/
+	    estatus            INT NOT NULL DEFAULT 1,/*1. Disponible 2.Prestado  3.Inactivo*/
         idLaboratorio      INT NOT NULL,
         FOREIGN KEY(idLaboratorio) REFERENCES laboratorio(idLaboratorio)
        );
