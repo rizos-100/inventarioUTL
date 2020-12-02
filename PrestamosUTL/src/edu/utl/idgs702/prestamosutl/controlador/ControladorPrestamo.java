@@ -102,7 +102,7 @@ public class ControladorPrestamo
                 s.setPersona(sp);
                 
                 
-                pr.setIdPrestamo(r.getInt("idPrestamoHerramientaPh"));
+                pr.setIdPrestamo(r.getInt("idPrestamoPr"));
                 pr.setFechaHoraPrestamo(r.getDate("fechaHoraPrestamoPr"));
                 pr.setFechaHoraDevolucion(r.getDate("fechaHoraDevolucionPr"));
                 pr.setEstatus(r.getInt("estatusPr"));
@@ -216,7 +216,7 @@ public class ControladorPrestamo
                 s.setPersona(sp);
                 
                 
-                pr.setIdPrestamo(r.getInt("idPrestamoHerramientaPh"));
+                pr.setIdPrestamo(r.getInt("idPrestamoPr"));
                 pr.setFechaHoraPrestamo(r.getDate("fechaHoraPrestamoPr"));
                 pr.setFechaHoraDevolucion(r.getDate("fechaHoraDevolucionPr"));
                 pr.setEstatus(r.getInt("estatusPr"));
@@ -330,7 +330,7 @@ public class ControladorPrestamo
                 s.setPersona(sp);
                 
                 
-                pr.setIdPrestamo(r.getInt("idPrestamoHerramientaPh"));
+                pr.setIdPrestamo(r.getInt("idPrestamoPr"));
                 pr.setFechaHoraPrestamo(r.getDate("fechaHoraPrestamoPr"));
                 pr.setFechaHoraDevolucion(r.getDate("fechaHoraDevolucionPr"));
                 pr.setEstatus(r.getInt("estatusPr"));
@@ -445,7 +445,7 @@ public class ControladorPrestamo
                 s.setPersona(sp);
                 
                 
-                pr.setIdPrestamo(r.getInt("idPrestamoHerramientaPh"));
+                pr.setIdPrestamo(r.getInt("idPrestamoPr"));
                 pr.setFechaHoraPrestamo(r.getDate("fechaHoraPrestamoPr"));
                 pr.setFechaHoraDevolucion(r.getDate("fechaHoraDevolucionPr"));
                 pr.setEstatus(r.getInt("estatusPr"));
