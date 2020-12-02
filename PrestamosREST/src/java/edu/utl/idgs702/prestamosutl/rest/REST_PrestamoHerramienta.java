@@ -2,6 +2,8 @@ package edu.utl.idgs702.prestamosutl.rest;
 
 import com.google.gson.Gson;
 import edu.utl.idgs702.prestamosutl.controlador.ControladorPrestamoHerramienta;
+import edu.utl.idgs702.prestamosutl.modelo.Herramienta;
+import edu.utl.idgs702.prestamosutl.modelo.Prestamo;
 import edu.utl.idgs702.prestamosutl.modelo.PrestamoHerramienta;
 import java.util.List;
 import javax.ws.rs.FormParam;
@@ -115,4 +117,89 @@ public class REST_PrestamoHerramienta extends Application
         return Response.status(Response.Status.OK).entity(out).build();
     }
 
+    @Path("insert")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response insert(@FormParam("fotoP") String fotoP,
+                            @FormParam("idPr") int idPr,
+                            @FormParam("idH") int idH) {
+        String out = null;
+        Gson gson = new Gson();
+        
+        PrestamoHerramienta ph = new PrestamoHerramienta();
+        Prestamo p = new Prestamo();
+        Herramienta h = new Herramienta();
+        
+        p.setIdPrestamo(idPr);
+        h.setIdHerramienta(idH);
+        
+        ph.setFotoPretamo(fotoP);
+        ph.setPrestamo(p);
+        ph.setHerramienta(h);
+        try {
+            
+            int ng = ControladorPrestamoHerramienta.agregarPrestamoHerramienta(ph);
+            out = "{\"result\":" + ng + "}";
+            //out = "{\"result\":\"OK\"}"; 
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = "{\"error:\"" + e.toString() + "\"}";
+        }
+
+        return Response.status(Response.Status.OK).entity(out).build();
+
+    }
+    
+    @POST
+    @Path("desactivar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response desactivar(@FormParam("idPH") int idPH,
+                            @FormParam("idH") int idH) {
+        String out = null;
+        Gson gson = new Gson();
+        try {
+            PrestamoHerramienta ph = new PrestamoHerramienta();
+            Herramienta h = new Herramienta();
+            
+            h.setIdHerramienta(idH);
+            
+            ph.setIdPrestamoHerramienta(idPH);
+            ph.setHerramienta(h);
+            ControladorPrestamoHerramienta.desactivaPrestamoHerramienta(ph);
+            out = "{\"result\":\"OK\"}"; 
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = "{\"error:\"" + e.toString() + "\"}";
+        }
+
+        return Response.status(Response.Status.OK).entity(out).build();
+
+    }
+    
+    @Path("devolver")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response devolver(@FormParam("idPH") int idPH,
+                            @FormParam("idH") int idH,
+                            @FormParam("fotoD") String fotoD) {
+        String out = null;
+        Gson gson = new Gson();
+        try {
+            PrestamoHerramienta ph = new PrestamoHerramienta();
+            Herramienta h = new Herramienta();
+            
+            h.setIdHerramienta(idH);
+            
+            ph.setIdPrestamoHerramienta(idPH);
+            ph.setFotoDevolucion(fotoD);
+            ph.setHerramienta(h);
+            ControladorPrestamoHerramienta.devolverPrestamoHerramienta(ph);
+            out = "{\"result\":\"OK\"}"; 
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = "{\"error:\"" + e.toString() + "\"}";
+        }
+
+        return Response.status(Response.Status.OK).entity(out).build();
+
+    }
 }

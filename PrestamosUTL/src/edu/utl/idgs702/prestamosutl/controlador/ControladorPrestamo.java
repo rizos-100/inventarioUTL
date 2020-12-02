@@ -479,4 +479,108 @@ public class ControladorPrestamo
             c.cerrar();
         }
     }
+    
+    /**
+     * <b>Descripción:</b><br>
+     * Inserta un nuevo prestamo en la base de datos
+     * 
+     * @param pr (Prestamo ha insertar)
+     * @return idPrestamo (Id del nuevo prestamo)
+     * @throws SQLException 
+     */
+    public static int agregarPrestamo(Prestamo pr) throws SQLException
+    {
+        String sql = "{CALL insertarPrestamo(?,?,?,?,?)}";
+
+        CallableStatement cstmt = null;
+        Conexion objConn = new Conexion();
+        Connection conn = null;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            conn = objConn.abrir();
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setString(1, pr.getTipo());
+            cstmt.setInt(2, pr.getSolicitante().getIdSolicitante());
+            cstmt.setInt(3, pr.getEmpleado().getIdEmpleado());
+            cstmt.setString(4, pr.getObservaciones());
+            
+            //Datos de Salida:
+            cstmt.registerOutParameter(5, Types.INTEGER);
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+
+            //Almacenamos los datos de salida
+            pr.setIdPrestamo(cstmt.getInt(5));
+            
+            cstmt.close();
+            
+            for (PrestamoHerramienta ph : pr.getHerramientas()) {
+                ControladorPrestamoHerramienta.agregarPrestamoHerramienta(ph);
+            }
+            
+            return pr.getIdPrestamo();
+        }
+        catch(Exception e)
+        {
+            if(cstmt != null)
+            {
+                cstmt.close();
+            }
+            e.printStackTrace();
+            return 0;
+        }
+        finally
+        {
+            conn.close();
+            objConn.cerrar();
+        }
+    }
+    
+    /**
+     * <b>Descripción:</b><br>
+     * Termina un prestamo en la base de datos
+     * 
+     * @param pr (Prestamo ha terminar)
+     * @throws SQLException 
+     */
+    public static void terminarPrestamo(Prestamo pr) throws SQLException
+    {
+        String sql = "{CALL terminarPrestamo(?)}";
+
+        CallableStatement cstmt = null;
+        Conexion objConn = new Conexion();
+        Connection conn = null;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            conn = objConn.abrir();
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setInt(1, pr.getIdPrestamo());
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+
+            
+            cstmt.close();
+        }
+        catch(Exception e)
+        {
+            if(cstmt != null)
+            {
+                cstmt.close();
+            }
+            e.printStackTrace();
+        }
+        finally
+        {
+            conn.close();
+            objConn.cerrar();
+        }
+    }
 }

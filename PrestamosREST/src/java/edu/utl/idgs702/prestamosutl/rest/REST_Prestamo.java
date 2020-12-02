@@ -3,6 +3,7 @@ package edu.utl.idgs702.prestamosutl.rest;
 import com.google.gson.Gson;
 import edu.utl.idgs702.prestamosutl.controlador.ControladorPrestamo;
 import edu.utl.idgs702.prestamosutl.modelo.Prestamo;
+import java.sql.Date;
 import java.util.List;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -94,6 +95,50 @@ public class REST_Prestamo extends Application
             out = "{\"error\":\""+e.toString()+"\"}";
         }
         return Response.status(Response.Status.OK).entity(out).build();
+    }
+    
+    @POST
+    @Path("insert")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response insert(@FormParam("prestamo") String jsonPrestamo) {
+        String out = null;
+        Gson gson = new Gson();
+        Prestamo pr = null;
+        //s = gson.fromJson(jsonServicio, Servicio.class);
+        try {
+            pr = gson.fromJson(jsonPrestamo, Prestamo.class);
+            
+            int ng = ControladorPrestamo.agregarPrestamo(pr);
+            out = "{\"result\":" + ng + "}";
+            //out = "{\"result\":\"OK\"}"; 
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = "{\"error:\"" + e.toString() + "\"}";
+        }
+
+        return Response.status(Response.Status.OK).entity(out).build();
+
+    }
+    
+    @POST
+    @Path("terminar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response terminar(@FormParam("idP") int idP) {
+        String out = null;
+        Gson gson = new Gson();
+        //s = gson.fromJson(jsonServicio, Servicio.class);
+        try {
+            Prestamo pr = new Prestamo();
+            pr.setIdPrestamo(idP);
+            ControladorPrestamo.terminarPrestamo(pr);
+            out = "{\"result\":\"OK\"}"; 
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = "{\"error:\"" + e.toString() + "\"}";
+        }
+
+        return Response.status(Response.Status.OK).entity(out).build();
+
     }
 
 }

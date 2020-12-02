@@ -728,4 +728,149 @@ public class ControladorPrestamoHerramienta
             c.cerrar();
         }
     }
+    
+    /**
+     * <b>Descripción:</b><br>
+     * Inserta un nuevo prestamoHerramienta en la base de datos
+     * 
+     * @param ph (PrestamoHerramienta ha insertar)
+     * @return idPrestamoHerramienta (Id de la nueva PrestamoHerramienta)
+     * @throws SQLException 
+     */
+    public static int agregarPrestamoHerramienta(PrestamoHerramienta ph) throws SQLException
+    {
+        String sql = "{CALL insertarHerramientaPrestamo(?,?,?,?)}";
+
+        CallableStatement cstmt = null;
+        Conexion objConn = new Conexion();
+        Connection conn = null;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            conn = objConn.abrir();
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setString(1, ph.getFotoPretamo());
+            cstmt.setInt(2, ph.getPrestamo().getIdPrestamo());
+            cstmt.setInt(3, ph.getHerramienta().getIdHerramienta());
+            
+            //Datos de Salida:
+            cstmt.registerOutParameter(4, Types.INTEGER);
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+
+            //Almacenamos los datos de salida
+            ph.setIdPrestamoHerramienta(cstmt.getInt(4));
+            
+            cstmt.close();
+            return ph.getIdPrestamoHerramienta();
+        }
+        catch(Exception e)
+        {
+            if(cstmt != null)
+            {
+                cstmt.close();
+            }
+            e.printStackTrace();
+            return 0;
+        }
+        finally
+        {
+            conn.close();
+            objConn.cerrar();
+        }
+    }
+    
+    /**
+     * <b>Descripción:</b><br>
+     * Desactiva un prestamoHerramienta en la base de datos
+     * 
+     * @param ph (PrestamoHerramienta ha desactivar)
+     * @throws SQLException 
+     */
+    public static void desactivaPrestamoHerramienta(PrestamoHerramienta ph) throws SQLException
+    {
+        String sql = "{CALL desactivarHerramientaPrestamo(?,?)}";
+
+        CallableStatement cstmt = null;
+        Conexion objConn = new Conexion();
+        Connection conn = null;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            conn = objConn.abrir();
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setInt(1, ph.getIdPrestamoHerramienta());
+            cstmt.setInt(2, ph.getHerramienta().getIdHerramienta());
+            
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+            
+            cstmt.close();
+        }
+        catch(Exception e)
+        {
+            if(cstmt != null)
+            {
+                cstmt.close();
+            }
+            e.printStackTrace();
+        }
+        finally
+        {
+            conn.close();
+            objConn.cerrar();
+        }
+    }
+    
+    /**
+     * <b>Descripción:</b><br>
+     * Devuelve un prestamoHerramienta en la base de datos
+     * 
+     * @param ph (PrestamoHerramienta ha devolver)
+     * @throws SQLException 
+     */
+    public static void devolverPrestamoHerramienta(PrestamoHerramienta ph) throws SQLException
+    {
+        String sql = "{CALL devolverHerramientaPrestamo(?,?,?)}";
+
+        CallableStatement cstmt = null;
+        Conexion objConn = new Conexion();
+        Connection conn = null;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            conn = objConn.abrir();
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setInt(1, ph.getIdPrestamoHerramienta());
+            cstmt.setInt(2, ph.getHerramienta().getIdHerramienta());
+            cstmt.setString(3, ph.getFotoDevolucion());
+            
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+            
+            cstmt.close();
+        }
+        catch(Exception e)
+        {
+            if(cstmt != null)
+            {
+                cstmt.close();
+            }
+            e.printStackTrace();
+        }
+        finally
+        {
+            conn.close();
+            objConn.cerrar();
+        }
+    }
 }
