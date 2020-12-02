@@ -23,7 +23,7 @@ public class Conexion
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://localhost:3306/viernes_v2";
+            url = "jdbc:mysql://localhost:3306/nombre";
             userName = "root";
             password = "root";
             
