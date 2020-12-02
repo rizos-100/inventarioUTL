@@ -81,7 +81,7 @@ public class REST_Prestamo extends Application
     @Path("getById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getById(@QueryParam("idP") int idP)
+    public Response activarCliente(@QueryParam("idP") int idP)
     {
         String out = "";
         try

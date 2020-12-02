@@ -101,7 +101,7 @@ public class REST_PrestamoHerramienta extends Application
     @Path("getAllById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getById(@QueryParam("idPr") int idPr)
+    public Response activarCliente(@QueryParam("idPr") int idPr)
     {
         String out = "";
         try
