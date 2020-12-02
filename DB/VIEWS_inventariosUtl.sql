@@ -23,7 +23,7 @@
  DROP VIEW IF EXISTS seeEmpleados;
  CREATE VIEW seeEmpleados AS
  (
-	SELECT e.idEmpleado AS idEmpleadoE, e.puesto AS puestoE, e.area AS areaE, e.contrasenia AS contraseniaE, e.estatus AS estatusE, 
+	SELECT e.idEmpleado AS idEmpleadoE, e.puesto AS puestoE, e.area AS areaE, e.usuario AS usuarioE, e.contrasenia AS contraseniaE, e.estatus AS estatusE, 
     p.idPersona AS idPersonaE, p.nombre AS nombreE, p.apellidoPaterno AS apellidoPaternoE, p.apellidoMaterno AS apellidoMaternoE, 
     p.correo AS correoE, p.telefono AS telefonoE, p.estado AS estadoE, p.municipio AS municipioE, p.calleNum AS calleNumE, 
     l.idLaboratorio AS idLaboratorioE, l.nombre AS nombreLE, l.ubicacion AS ubicacionE, l.estatus AS estatusLE
