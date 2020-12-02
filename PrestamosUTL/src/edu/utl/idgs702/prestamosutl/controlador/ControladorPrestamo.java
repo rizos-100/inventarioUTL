@@ -111,7 +111,7 @@ public class ControladorPrestamo
                 pr.setEmpleado(e);
                 pr.setSolicitante(s);
                 
-                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo());
+                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo(), miC);
                 pr.setHerramientas(ph);
                 
                 /*Fin del llenado del prestamo 'pr' */
@@ -225,7 +225,7 @@ public class ControladorPrestamo
                 pr.setEmpleado(e);
                 pr.setSolicitante(s);
                 
-                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo());
+                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo(), miC);
                 pr.setHerramientas(ph);
                 
                 /*Fin del llenado del prestamo 'pr' */
@@ -339,7 +339,7 @@ public class ControladorPrestamo
                 pr.setEmpleado(e);
                 pr.setSolicitante(s);
                 
-                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo());
+                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo(), miC);
                 pr.setHerramientas(ph);
                 
                 /*Fin del llenado del prestamo 'pr' */
@@ -454,7 +454,7 @@ public class ControladorPrestamo
                 pr.setEmpleado(e);
                 pr.setSolicitante(s);
                 
-                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo());
+                List<PrestamoHerramienta> ph = ControladorPrestamoHerramienta.getPrestamoHerramientasByPrestamo(pr.getIdPrestamo(), miC);
                 pr.setHerramientas(ph);
                 
                 /*Fin del llenado del prestamo 'pr' */
