@@ -80,7 +80,7 @@ public class REST_Solicitante extends Application
     @Path("getById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarCliente(@QueryParam("idS") int idS)
+    public Response getById(@QueryParam("idS") int idS)
     {
         String out = "";
         try

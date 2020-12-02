@@ -99,7 +99,7 @@ public class REST_Herramienta extends Application
     @Path("getById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarCliente(@QueryParam("idH") int idH)
+    public Response getById(@QueryParam("idH") int idH)
     {
         String out = "";
         try

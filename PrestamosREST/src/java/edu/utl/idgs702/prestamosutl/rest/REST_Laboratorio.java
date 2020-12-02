@@ -80,7 +80,7 @@ public class REST_Laboratorio extends Application
     @Path("getById")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarCliente(@QueryParam("idL") int idL)
+    public Response getById(@QueryParam("idL") int idL)
     {
         String out = "";
         try
