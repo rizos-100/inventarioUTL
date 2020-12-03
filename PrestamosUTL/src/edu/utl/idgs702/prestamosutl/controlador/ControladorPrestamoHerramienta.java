@@ -918,6 +918,48 @@ public class ControladorPrestamoHerramienta
     
     /**
      * <b>Descripción:</b><br>
+     * Inserta un nuevo prestamoHerramienta en la base de datos
+     * 
+     * @param ph (PrestamoHerramienta ha insertar)
+     * @return idPrestamoHerramienta (Id de la nueva PrestamoHerramienta)
+     * @throws SQLException 
+     */
+    public static int agregarPrestamoHerramienta(PrestamoHerramienta ph, Connection con) throws SQLException
+    {
+        String sql = "{CALL insertarHerramientaPrestamo(?,?,?,?)}";
+
+        CallableStatement cstmt = null;
+        Connection conn = con;
+        
+        try {
+            //Preparamos un statement para ejecutar la consulta
+            cstmt = conn.prepareCall(sql);
+            
+            //Datos entrada
+            cstmt.setString(1, ph.getFotoPretamo());
+            cstmt.setInt(2, ph.getPrestamo().getIdPrestamo());
+            cstmt.setInt(3, ph.getHerramienta().getIdHerramienta());
+            
+            //Datos de Salida:
+            cstmt.registerOutParameter(4, Types.INTEGER);
+            
+            //Ejecutamos la consulta
+            cstmt.executeUpdate();
+
+            //Almacenamos los datos de salida
+            ph.setIdPrestamoHerramienta(cstmt.getInt(4));
+            return ph.getIdPrestamoHerramienta();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    
+    /**
+     * <b>Descripción:</b><br>
      * Desactiva un prestamoHerramienta en la base de datos
      * 
      * @param ph (PrestamoHerramienta ha desactivar)

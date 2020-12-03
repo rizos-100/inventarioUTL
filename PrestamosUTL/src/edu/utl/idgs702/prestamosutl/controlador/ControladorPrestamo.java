@@ -518,7 +518,8 @@ public class ControladorPrestamo
             cstmt.close();
             
             for (PrestamoHerramienta ph : pr.getHerramientas()) {
-                ControladorPrestamoHerramienta.agregarPrestamoHerramienta(ph);
+                ph.setPrestamo(pr);
+                ControladorPrestamoHerramienta.agregarPrestamoHerramienta(ph, conn);
             }
             
             return pr.getIdPrestamo();
