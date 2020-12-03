@@ -18,6 +18,9 @@
                     desactivar o devolver una herramienta, terminar un 
                     prestamo y se modifico el de registrar un prestamo.
                     
+                    02/12/2020 - Se modifico el procedimiento de insertar prestamo
+                    y terminar prestamo para cambiar el ingreso de observaciones.
+                    
 
  */
  
@@ -93,16 +96,13 @@
   /* Procedimiento para registrar la entrega total de un prestamo*/
    DROP PROCEDURE IF EXISTS terminarPrestamo;
    DELIMITER $$
-   CREATE PROCEDURE terminarPrestamo(IN idP INT)
+   CREATE PROCEDURE terminarPrestamo(IN idP INT, IN observ VARCHAR(100))
    BEGIN
    UPDATE prestamo
-   SET fechaHoraDevolucion=NOW()
+   SET fechaHoraDevolucion=NOW(),estatus=2,observaciones=observ
    WHERE idPrestamo=idP;
-   
-   UPDATE prestamo
-   SET estatus=2
-   WHERE idPrestamo=idP;
+ 
    END
    $$
    
-CALL terminarPrestamo(1);
+CALL terminarPrestamo(2,'Todo bien');
