@@ -145,7 +145,7 @@ public class ControladorPrestamo
      */
     public static List<Prestamo> getPrestamosActivos()
     {
-        String sql = "SELECT * FROM seePrestamoHerramientas WHERE estatusPr = 1";
+        String sql = "SELECT * FROM seePrestamos WHERE estatusPr = 1";
         List<Prestamo> prestamos = new ArrayList<>();
         
         Conexion c = new Conexion();
@@ -259,7 +259,7 @@ public class ControladorPrestamo
      */
     public static List<Prestamo> getPrestamosDevuelto()
     {
-        String sql = "SELECT * FROM seePrestamoHerramientas WHERE estatusPr = 2";
+        String sql = "SELECT * FROM seePrestamos WHERE estatusPr = 2";
         List<Prestamo> prestamos = new ArrayList<>();
         
         Conexion c = new Conexion();
@@ -374,7 +374,7 @@ public class ControladorPrestamo
      */
     public static Prestamo getPrestamosById(int idPr)
     {
-        String sql = "SELECT * FROM seePrestamoHerramientas WHERE idPrestamoPr = "+idPr;
+        String sql = "SELECT * FROM seePrestamos WHERE idPrestamoPr = "+idPr;
         Prestamo prestamo = new Prestamo();
         
         Conexion c = new Conexion();
