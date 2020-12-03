@@ -21,6 +21,8 @@
                     02/12/2020 - Se modifico el procedimiento de insertar prestamo
                     y terminar prestamo para cambiar el ingreso de observaciones.
                     
+                    02/12/2020 - Se modifico el procedimiento de insertar prestamo
+                    se quito el IN observacion. -Carrizal
 
  */
  
@@ -30,9 +32,9 @@
  DROP PROCEDURE IF EXISTS insertarPrestamo;
  DELIMITER $$
  CREATE PROCEDURE insertarPrestamo(IN tipo  VARCHAR(30),IN idSol INT, 
- IN idEmp INT, IN observ VARCHAR(100), OUT idP INT)
+ IN idEmp INT, OUT idP INT)
  BEGIN
-  INSERT INTO prestamo VALUES(DEFAULT,NOW(),NULL,DEFAULT,tipo, observ, idSol, idEmp);
+  INSERT INTO prestamo VALUES(DEFAULT,NOW(),NULL,DEFAULT,tipo, NULL, idSol, idEmp);
   set idP=last_insert_id();
  END $$
  

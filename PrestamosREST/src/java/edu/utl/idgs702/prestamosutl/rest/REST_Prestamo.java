@@ -123,13 +123,15 @@ public class REST_Prestamo extends Application
     @POST
     @Path("terminar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response terminar(@FormParam("idP") int idP) {
+    public Response terminar(@FormParam("idP") int idP,
+                             @FormParam("obvs") String obvs) {
         String out = null;
         Gson gson = new Gson();
         //s = gson.fromJson(jsonServicio, Servicio.class);
         try {
             Prestamo pr = new Prestamo();
             pr.setIdPrestamo(idP);
+            pr.setObservaciones(obvs);
             ControladorPrestamo.terminarPrestamo(pr);
             out = "{\"result\":\"OK\"}"; 
         } catch (Exception e) {

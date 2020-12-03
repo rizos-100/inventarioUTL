@@ -490,7 +490,7 @@ public class ControladorPrestamo
      */
     public static int agregarPrestamo(Prestamo pr) throws SQLException
     {
-        String sql = "{CALL insertarPrestamo(?,?,?,?,?)}";
+        String sql = "{CALL insertarPrestamo(?,?,?,?)}";
 
         CallableStatement cstmt = null;
         Conexion objConn = new Conexion();
@@ -505,16 +505,15 @@ public class ControladorPrestamo
             cstmt.setString(1, pr.getTipo());
             cstmt.setInt(2, pr.getSolicitante().getIdSolicitante());
             cstmt.setInt(3, pr.getEmpleado().getIdEmpleado());
-            cstmt.setString(4, pr.getObservaciones());
             
             //Datos de Salida:
-            cstmt.registerOutParameter(5, Types.INTEGER);
+            cstmt.registerOutParameter(4, Types.INTEGER);
             
             //Ejecutamos la consulta
             cstmt.executeUpdate();
 
             //Almacenamos los datos de salida
-            pr.setIdPrestamo(cstmt.getInt(5));
+            pr.setIdPrestamo(cstmt.getInt(4));
             
             cstmt.close();
             
@@ -549,7 +548,7 @@ public class ControladorPrestamo
      */
     public static void terminarPrestamo(Prestamo pr) throws SQLException
     {
-        String sql = "{CALL terminarPrestamo(?)}";
+        String sql = "{CALL terminarPrestamo(?,?)}";
 
         CallableStatement cstmt = null;
         Conexion objConn = new Conexion();
@@ -562,6 +561,7 @@ public class ControladorPrestamo
             
             //Datos entrada
             cstmt.setInt(1, pr.getIdPrestamo());
+            cstmt.setString(2, pr.getObservaciones());
             
             //Ejecutamos la consulta
             cstmt.executeUpdate();
