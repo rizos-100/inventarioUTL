@@ -120,24 +120,13 @@ public class REST_PrestamoHerramienta extends Application
     @Path("insert")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@FormParam("fotoP") String fotoP,
-                            @FormParam("idPr") int idPr,
-                            @FormParam("idH") int idH) {
+    public Response insert(@FormParam("prestamoHerramienta") String jsonPrestamoHerramienta) {
         String out = null;
         Gson gson = new Gson();
         
-        PrestamoHerramienta ph = new PrestamoHerramienta();
-        Prestamo p = new Prestamo();
-        Herramienta h = new Herramienta();
-        
-        p.setIdPrestamo(idPr);
-        h.setIdHerramienta(idH);
-        
-        ph.setFotoPretamo(fotoP);
-        ph.setPrestamo(p);
-        ph.setHerramienta(h);
+        PrestamoHerramienta ph = null;
         try {
-            
+            ph = gson.fromJson(jsonPrestamoHerramienta, PrestamoHerramienta.class);
             int ng = ControladorPrestamoHerramienta.agregarPrestamoHerramienta(ph);
             out = "{\"result\":" + ng + "}";
             //out = "{\"result\":\"OK\"}"; 

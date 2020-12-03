@@ -32,7 +32,7 @@ public class PrestamoHerramienta {
         return fotoPrestamo;
     }
 
-    public void setFotoPretamo(String fotoPrestamo) {
+    public void setFotoPrestamo(String fotoPrestamo) {
         this.fotoPrestamo = fotoPrestamo;
     }
 

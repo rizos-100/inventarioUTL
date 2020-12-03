@@ -138,7 +138,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -279,7 +279,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -420,7 +420,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -561,7 +561,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -703,7 +703,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -843,7 +843,7 @@ public class ControladorPrestamoHerramienta
                 /*Llenado del prestamoHerramienta 'ph' */
                 
                 ph.setIdPrestamoHerramienta(r.getInt("idPrestamoHerramientaPh"));
-                ph.setFotoPretamo(r.getString("fotoPrestamoPh"));
+                ph.setFotoPrestamo(r.getString("fotoPrestamoPh"));
                 ph.setFotoDevolucion(r.getString("fotoDevolucionPh"));
                 ph.setEstatus(r.getInt("estatusPh"));
                 ph.setPrestamo(pr);
@@ -884,7 +884,7 @@ public class ControladorPrestamoHerramienta
             cstmt = conn.prepareCall(sql);
             
             //Datos entrada
-            cstmt.setString(1, ph.getFotoPretamo());
+            cstmt.setString(1, ph.getFotoPrestamo());
             cstmt.setInt(2, ph.getPrestamo().getIdPrestamo());
             cstmt.setInt(3, ph.getHerramienta().getIdHerramienta());
             
@@ -936,7 +936,7 @@ public class ControladorPrestamoHerramienta
             cstmt = conn.prepareCall(sql);
             
             //Datos entrada
-            cstmt.setString(1, ph.getFotoPretamo());
+            cstmt.setString(1, ph.getFotoPrestamo());
             cstmt.setInt(2, ph.getPrestamo().getIdPrestamo());
             cstmt.setInt(3, ph.getHerramienta().getIdHerramienta());
             
