@@ -11,7 +11,7 @@ package edu.utl.idgs702.prestamosutl.modelo;
  */
 public class PrestamoHerramienta {
     private int idPrestamoHerramienta;
-    private String fotoPretamo;
+    private String fotoPrestamo;
     private String fotoDevolucion;
     private int estatus;
     private Prestamo prestamo;
@@ -28,12 +28,12 @@ public class PrestamoHerramienta {
         this.idPrestamoHerramienta = idPrestamoHerramienta;
     }
 
-    public String getFotoPretamo() {
-        return fotoPretamo;
+    public String getFotoPrestamo() {
+        return fotoPrestamo;
     }
 
-    public void setFotoPretamo(String fotoPretamo) {
-        this.fotoPretamo = fotoPretamo;
+    public void setFotoPretamo(String fotoPrestamo) {
+        this.fotoPrestamo = fotoPrestamo;
     }
 
     public String getFotoDevolucion() {
