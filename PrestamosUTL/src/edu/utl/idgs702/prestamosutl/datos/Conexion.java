@@ -23,7 +23,7 @@ public class Conexion
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://localhost:3306/inventariosutl";
+            url = "jdbc:mysql://localhost:3306/inventariosutl?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
             userName = "root";
             password = "root";
             
