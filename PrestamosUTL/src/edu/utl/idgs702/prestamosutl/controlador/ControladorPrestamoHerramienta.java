@@ -1012,7 +1012,7 @@ public class ControladorPrestamoHerramienta
      */
     public static void devolverPrestamoHerramienta(PrestamoHerramienta ph) throws SQLException
     {
-        String sql = "{CALL devolverHerramientaPrestamo(?,?,?)}";
+        String sql = "{CALL devolverHerramientaPrestamo(?,?,?,?)}";
 
         CallableStatement cstmt = null;
         Conexion objConn = new Conexion();
@@ -1027,6 +1027,7 @@ public class ControladorPrestamoHerramienta
             cstmt.setInt(1, ph.getIdPrestamoHerramienta());
             cstmt.setInt(2, ph.getHerramienta().getIdHerramienta());
             cstmt.setString(3, ph.getFotoDevolucion());
+            cstmt.setString(4, ph.getHerramienta().getCondiciones());
             
             
             //Ejecutamos la consulta

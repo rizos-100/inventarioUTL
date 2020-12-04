@@ -18,6 +18,9 @@
                     02/12/2020 - Se cambio el estatus de la herramienta a 
                     tipo entero y se definieron sus significados segun el numero 
                     que le corresponda.
+                    
+                    04/12/2020 - se modifico el campo condiciones a null
+                    de la tabla herramienta
 
  */
  
@@ -78,7 +81,7 @@
 		color              VARCHAR (20) NOT NULL DEFAULT'',
 		tipo               VARCHAR(30) NOT NULL DEFAULT'',
 	    material           VARCHAR(40) NOT NULL DEFAULT'',
-		condiciones        VARCHAR(60) NOT NULL DEFAULT '',
+		condiciones        VARCHAR(60),
 	    estatus            INT NOT NULL DEFAULT 1,/*1. Disponible 2.Prestado  3.Inactivo*/
         idLaboratorio      INT NOT NULL,
         FOREIGN KEY(idLaboratorio) REFERENCES laboratorio(idLaboratorio)

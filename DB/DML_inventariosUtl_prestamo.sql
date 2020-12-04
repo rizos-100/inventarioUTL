@@ -23,6 +23,9 @@
                     
                     02/12/2020 - Se modifico el procedimiento de insertar prestamo
                     se quito el IN observacion. -Carrizal
+                    
+                    04/12/2020 - Se modifico el procedimiento de devolver herramienta
+                    se agrego el IN condiciones. -Carrizal
 
  */
  
@@ -74,14 +77,14 @@
  /* Procedimiento para devolverr materiales de un prestamo*/
  DROP PROCEDURE IF EXISTS devolverHerramientaPrestamo;
  DELIMITER  $$
- CREATE PROCEDURE devolverHerramientaPrestamo(IN idHP INT,IN idH INT,IN fotoD LONGTEXT)
+ CREATE PROCEDURE devolverHerramientaPrestamo(IN idHP INT,IN idH INT,IN fotoD LONGTEXT, IN con varchar(60))
  BEGIN
  UPDATE prestamoherramienta
  SET estatus=3
  WHERE idPrestamoHerramienta=idHP;
  
  UPDATE herramienta
- SET estatus=1
+ SET estatus=1, condiciones= con
  WHERE idHerramienta=idH;
 
  
@@ -92,7 +95,7 @@
  END
  $$
  
- CALL devolverHerramientaPrestamo(1,1,'HGDRSYHGA');
+ CALL devolverHerramientaPrestamo(1,1,'HGDRSYHGA','Buenas');
  
  ##############################################################################################################
   /* Procedimiento para registrar la entrega total de un prestamo*/

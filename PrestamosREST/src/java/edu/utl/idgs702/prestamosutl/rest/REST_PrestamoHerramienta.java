@@ -169,7 +169,8 @@ public class REST_PrestamoHerramienta extends Application
     @Produces(MediaType.APPLICATION_JSON)
     public Response devolver(@FormParam("idPH") int idPH,
                             @FormParam("idH") int idH,
-                            @FormParam("fotoD") String fotoD) {
+                            @FormParam("fotoD") String fotoD,
+                            @FormParam("condiciones") String condi) {
         String out = null;
         Gson gson = new Gson();
         try {
@@ -177,6 +178,7 @@ public class REST_PrestamoHerramienta extends Application
             Herramienta h = new Herramienta();
             
             h.setIdHerramienta(idH);
+            h.setCondiciones(condi);
             
             ph.setIdPrestamoHerramienta(idPH);
             ph.setFotoDevolucion(fotoD);
