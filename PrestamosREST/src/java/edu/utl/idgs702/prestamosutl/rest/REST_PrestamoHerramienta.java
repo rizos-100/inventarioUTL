@@ -166,6 +166,7 @@ public class REST_PrestamoHerramienta extends Application
     }
     
     @Path("devolver")
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response devolver(@FormParam("idPH") int idPH,
                             @FormParam("idH") int idH,
