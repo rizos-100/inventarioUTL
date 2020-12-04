@@ -94,7 +94,7 @@
         fechaHoraDevolucion  DATETIME,
         estatus              INT NOT NULL DEFAULT 1,/*1. Activo 2.Devuelto*/
         tipo                 VARCHAR(30) NOT NULL DEFAULT '',
-        observaciones        VARCHAR(100) NOT NULL DEFAULT '',
+        observaciones        VARCHAR(100),
         idSolicitante        INT NOT NULL,
         idEmpleado           INT NOT NULL,
         FOREIGN KEY(idSolicitante) REFERENCES solicitante(idSolicitante),
